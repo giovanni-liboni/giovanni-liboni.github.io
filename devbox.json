@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
+  "packages": ["ruby@3.3"],
+  "shell": {
+    "scripts": {
+      "build": ["bundle exec jekyll build"],
+      "serve": ["bundle exec jekyll serve --livereload"],
+      "install": ["bundle install --jobs 4 --retry 3"]
+    }
+  }
+}
