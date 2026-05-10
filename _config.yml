@@ -122,6 +122,13 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - devbox.json
+  - devbox.lock
+  - .devbox
+  - .ruby-version
+  - CONTRIBUTING.md
+  - LICENSE
+  - README.md
 keep_files:
   - CNAME
   - .nojekyll
