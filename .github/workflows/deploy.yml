@@ -30,16 +30,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Generate build info
-        run: |
-          mkdir -p _data
-          {
-            echo "sha: ${GITHUB_SHA}"
-            echo "ref: ${GITHUB_REF}"
-            echo "run_id: ${GITHUB_RUN_ID}"
-            echo "run_number: ${GITHUB_RUN_NUMBER}"
-            echo "time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          } > _data/build.yml
-          cat _data/build.yml
+        run: ./script/build-info
       - name: Build site
         env:
           JEKYLL_ENV: production
