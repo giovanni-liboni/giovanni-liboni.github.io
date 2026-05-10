@@ -1,0 +1,394 @@
+// Reusable terminal-style components
+
+// Prompt-style line: "$ whoami"
+.prompt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+
+  &::before {
+    content: "$";
+    color: var(--accent);
+    font-weight: 700;
+    flex: 0 0 auto;
+  }
+
+  .prompt-cmd { color: var(--fg); font-weight: 600; }
+  .prompt-args { color: var(--fg-mute); }
+}
+
+// Bordered "framed" section that looks like a TUI box.
+// Uses pseudo-elements for the corners + label so we don't need extra markup.
+.frame {
+  position: relative;
+  border: 1px solid var(--fg-faint);
+  border-radius: $radius;
+  padding: 1.1rem 1.25rem 1.25rem;
+  margin: 1.25rem 0 1.75rem;
+  background: var(--bg-elev);
+
+  &::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -0.65rem;
+    left: 0.9rem;
+    padding: 0 0.5rem;
+    background: var(--bg);
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+  }
+
+  > :first-child { margin-top: 0; }
+  > :last-child  { margin-bottom: 0; }
+}
+
+// Hero block on the about page
+
+.hero {
+  margin-top: 1rem;
+
+  .hero-line {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-headline {
+    font-size: 1.7rem;
+    line-height: 1.25;
+    margin: 0.4rem 0 0.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+
+    .accent { color: var(--accent); }
+  }
+
+  .hero-tagline {
+    color: var(--fg-mute);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-motto {
+    margin-top: 0.75rem;
+    color: var(--fg-mute);
+    font-size: 0.9rem;
+    em { color: var(--accent); font-style: italic; }
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+
+    @media (min-width: 640px) {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .hero-photo {
+    width: 160px;
+    border-radius: $radius;
+    border: 1px solid var(--fg-faint);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+    overflow: hidden;
+    justify-self: end;
+
+    img { width: 100%; height: auto; display: block; }
+  }
+}
+
+// Inline labels: blink cursor, "›" prefixes
+.cursor::after {
+  content: "▋";
+  margin-left: 0.15em;
+  color: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+// News list
+
+.news {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed var(--fg-faint);
+
+    &:last-child { border-bottom: 0; }
+
+    .date {
+      color: var(--fg-mute);
+      font-size: 0.85rem;
+      &::before { content: "› "; color: var(--accent); }
+    }
+
+    .news-body { color: var(--fg); }
+  }
+}
+
+// Publications list (jekyll-scholar emits <ol class="bibliography"><li>…)
+
+ol.bibliography {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.pub-entry {
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed var(--fg-faint);
+
+  &:last-child { border-bottom: 0; }
+
+  .pub-title {
+    font-weight: 600;
+    color: var(--fg);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .pub-meta {
+    font-size: 0.85rem;
+    color: var(--fg-mute);
+  }
+
+  .pub-year {
+    display: inline-block;
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pub-self { border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+
+  .pub-links {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pub-link {
+    font-size: 0.78rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--fg-faint);
+    border-radius: 3px;
+    color: var(--fg-mute);
+    cursor: pointer;
+    background: none;
+    font-family: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--fg-faint);
+
+    &:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+  }
+
+  .pub-detail {
+    margin-top: 0.5rem;
+    padding: 0 0.8rem;
+    background: var(--bg-elev);
+    border-left: 0 solid var(--accent);
+    font-size: 0.85rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms ease, padding 200ms ease, border-left-width 200ms ease;
+
+    &.open {
+      max-height: 60em;
+      padding: 0.6rem 0.8rem;
+      border-left-width: 2px;
+    }
+
+    pre { margin: 0; font-size: 0.8rem; }
+  }
+}
+
+.publications ol.bibliography:last-of-type .pub-entry:last-child {
+  border-bottom: 0;
+}
+
+.publications {
+  h2.year {
+    color: var(--fg-mute);
+    border-top: 1px solid var(--fg-faint);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: left;
+
+    &::before { content: "## "; color: var(--accent); }
+  }
+}
+
+// Projects grid
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .project-card {
+    border: 1px solid var(--fg-faint);
+    border-radius: $radius;
+    background: var(--bg-elev);
+    padding: 1rem;
+    transition: border-color $dur, transform $dur;
+    color: var(--fg);
+    display: block;
+
+    &:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-title {
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 0.3rem;
+      &::before { content: "▸ "; color: var(--accent); }
+    }
+
+    .project-desc {
+      color: var(--fg-mute);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--fg-faint);
+    }
+
+    img {
+      border-radius: 3px;
+      margin-bottom: 0.6rem;
+    }
+  }
+}
+
+// Social links
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 1.25rem 0;
+  list-style: none;
+  padding: 0;
+
+  a {
+    color: var(--fg-mute);
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--fg-faint);
+    border-radius: 3px;
+    border-bottom: 1px solid var(--fg-faint);
+
+    &::before { content: "@ "; color: var(--accent); }
+
+    &:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+  }
+}
+
+.contact-note {
+  color: var(--fg-mute);
+  font-style: italic;
+  font-size: 0.88rem;
+  margin-top: 0.75rem;
+}
+
+// Blog post list
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+
+  > li {
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--fg-faint);
+
+    .post-meta {
+      font-size: 0.82rem;
+      color: var(--fg-mute);
+      margin-bottom: 0.25rem;
+    }
+
+    .post-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      &::before { content: "› "; color: var(--accent); }
+    }
+  }
+}
+
+// Pagination
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  justify-content: center;
+
+  a, span {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--fg-faint);
+    border-radius: 3px;
+    color: var(--fg-mute);
+    font-size: 0.85rem;
+  }
+
+  a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .active {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .disabled { opacity: 0.4; }
+}
+
+// Page header (for non-home pages)
+
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--fg-faint);
+
+  h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+    &::before { content: "/ "; color: var(--accent); }
+  }
+
+  .desc { color: var(--fg-mute); font-size: 0.9rem; margin: 0; }
+}

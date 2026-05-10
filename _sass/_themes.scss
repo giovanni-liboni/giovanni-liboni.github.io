@@ -1,43 +1,38 @@
-/*******************************************************************************
- * Themes
- ******************************************************************************/
- 
-:root {
-  --global-bg-color: #{$white-color};
-  --global-text-color: #{$black-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$light-purple-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
-  --global-icon-color: #{$grey-color-dark};
+// Dark by default; light theme is opt-in.
 
-  .fa-sun {
-    display : none;
-  }
-  .fa-moon {
-    padding-left: 10px;
-    padding-top: 12px;
-    display : block;
-  }
+:root,
+html[data-theme='dark'] {
+  --bg:           #{$bg-dark};
+  --bg-elev:      #{$bg-dark-elev};
+  --fg:           #{$fg-dark};
+  --fg-mute:      #{$fg-dark-mute};
+  --fg-faint:     #{$fg-dark-faint};
+  --accent:       #{$accent};
+  --accent-hover: #{$accent-hover};
+  --accent-glow:  #{$accent-glow};
+  --danger:       #{$danger};
+
+  color-scheme: dark;
 }
 
-html[data-theme='dark'] {
-  --global-bg-color: #{$grey-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$light-cyan-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-icon-color: navajowhite;
+html[data-theme='light'] {
+  --bg:           #{$bg-light};
+  --bg-elev:      #{$bg-light-elev};
+  --fg:           #{$fg-light};
+  --fg-mute:      #{$fg-light-mute};
+  --fg-faint:     #{$fg-light-faint};
+  --accent:       #0F9D58;          // slightly desaturated for light bg
+  --accent-hover: #0B8043;
+  --accent-glow:  rgba(15, 157, 88, 0.2);
+  --danger:       #B00020;
 
-  .fa-sun {
-    padding-left: 10px;
-    padding-top: 12px;
-    display : block;
-  }
-  .fa-moon {
-    display : none;
-  }
+  color-scheme: light;
+}
+
+// Theme transition (only when toggled)
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+  transition: background-color 200ms, color 200ms, border-color 200ms;
 }

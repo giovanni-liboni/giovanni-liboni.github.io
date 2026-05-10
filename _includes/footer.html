@@ -1,33 +1,16 @@
-{% if site.footer_fixed %}
-<footer class="fixed-bottom">
-  <div class="container mt-0">
-    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}.
-    {{ site.footer_text }}
-    {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-    {% endif %}
-    {% if site.last_updated %}
-    Last updated: {{ "now" | date: '%B %d, %Y' }}.
-    {% endif %}
+<footer class="site-footer">
+  <div class="container footer-row">
+    <div>
+      &copy; {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}.
+      {{ site.footer_text }}
+      {% if site.impressum_path %}<a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>{% endif %}
+    </div>
     {% if site.data.build %}
-    <span class="build-tag" title="{{ site.data.build.time }}">build {{ site.data.build.sha | slice: 0, 7 }}</span>.
+    <div class="build-tag" title="ref {{ site.data.build.ref }} · run #{{ site.data.build.run_number }} · built {{ site.data.build.time }}">
+      build {{ site.data.build.sha | slice: 0, 7 }}
+    </div>
+    {% elsif site.last_updated %}
+    <div class="build-tag">updated {{ "now" | date: '%Y-%m-%d' }}</div>
     {% endif %}
   </div>
 </footer>
-{% else %}
-<footer class="sticky-bottom mt-5">
-  <div class="container">
-    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}.
-    {{ site.footer_text }}
-    {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-    {% endif %}
-    {% if site.last_updated %}
-    Last updated: {{ "now" | date: '%B %d, %Y' }}.
-    {% endif %}
-    {% if site.data.build %}
-    <span class="build-tag" title="{{ site.data.build.time }}">build {{ site.data.build.sha | slice: 0, 7 }}</span>.
-    {% endif %}
-  </div>
-</footer>
-{% endif %}
