@@ -1,10 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
-  "packages": ["ruby@3.3"],
+  "packages": [
+    "ruby@3.3",
+    "imagemagick@latest"
+  ],
   "shell": {
     "scripts": {
-      "build": ["bundle exec jekyll build"],
-      "serve": ["bundle exec jekyll serve --livereload"],
+      "build":   ["bundle exec jekyll build"],
+      "serve":   ["bundle exec jekyll serve --livereload"],
       "install": ["bundle install --jobs 4 --retry 3"]
     }
   }
