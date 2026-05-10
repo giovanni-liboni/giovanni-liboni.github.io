@@ -43,6 +43,7 @@ jobs:
       - name: Build site
         env:
           JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
         run: bundle exec jekyll build
       - name: Configure Pages
         uses: actions/configure-pages@v5
