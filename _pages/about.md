@@ -6,7 +6,7 @@ description: Cloud · automation · co-simulation
 
 profile:
   align: right
-  image: profile.png
+  image: profile.webp
 
 news: true
 selected_papers: true
