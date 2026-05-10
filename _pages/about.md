@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-description: Cloud · automation · co-simulation
+description: Backend · distributed systems · edge & cloud
 
 profile:
   align: right
@@ -13,4 +13,4 @@ selected_papers: true
 social: true
 ---
 
-Computer Scientist. B.Sc., M.Sc. and Ph.D. in Computer Science. I work on cloud platforms and automation, and I have a soft spot for distributed systems and cyber-physical co-simulation — the topic of my doctoral research.
+Senior Software Engineer at [Corsmed](https://corsmed.com), based in Nice. Backend in Go, building reliable platforms and distributed systems. Background in embedded and cyber-physical systems — the topic of my Ph.D. — and a soft spot for everything that sits between the edge and the cloud.
