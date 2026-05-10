@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Writes _data/build.yml with SHA, ref, and build time.
+# Detects GitHub Actions, Cloudflare Pages, or falls back to local git.
+set -euo pipefail
+
+mkdir -p _data
+
+if [ -n "${GITHUB_SHA:-}" ]; then
+  sha=$GITHUB_SHA
+  ref=$GITHUB_REF
+  run_id=$GITHUB_RUN_ID
+  run_number=$GITHUB_RUN_NUMBER
+  provider=github-actions
+elif [ -n "${CF_PAGES_COMMIT_SHA:-}" ]; then
+  sha=$CF_PAGES_COMMIT_SHA
+  ref=refs/heads/$CF_PAGES_BRANCH
+  run_id=${CF_PAGES_URL:-}
+  run_number=
+  provider=cloudflare-pages
+else
+  sha=$(git rev-parse HEAD 2>/dev/null || echo unknown)
+  ref=$(git symbolic-ref HEAD 2>/dev/null || echo unknown)
+  run_id=
+  run_number=
+  provider=local
+fi
+
+cat > _data/build.yml <<EOF
+sha: $sha
+ref: $ref
+run_id: $run_id
+run_number: $run_number
+provider: $provider
+time: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+EOF
+
+cat _data/build.yml
