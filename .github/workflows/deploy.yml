@@ -39,7 +39,18 @@ jobs:
         else
           echo "DEPLOY_BRANCH=gh-pages" >> "$GITHUB_OUTPUT"
         fi
-    - name: Deploy website 
+    - name: Generate build info
+      run: |
+        mkdir -p _data
+        {
+          echo "sha: ${GITHUB_SHA}"
+          echo "ref: ${GITHUB_REF}"
+          echo "run_id: ${GITHUB_RUN_ID}"
+          echo "run_number: ${GITHUB_RUN_NUMBER}"
+          echo "time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        } > _data/build.yml
+        cat _data/build.yml
+    - name: Deploy website
       run:  yes | bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
-                    --src ${{ steps.setup.outputs.SRC_BRANCH }} 
-                    --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }} 
+                    --src ${{ steps.setup.outputs.SRC_BRANCH }}
+                    --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }}

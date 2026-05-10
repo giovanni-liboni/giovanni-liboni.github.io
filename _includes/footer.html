@@ -9,6 +9,9 @@
     {% if site.last_updated %}
     Last updated: {{ "now" | date: '%B %d, %Y' }}.
     {% endif %}
+    {% if site.data.build %}
+    <span class="build-tag" title="{{ site.data.build.time }}">build {{ site.data.build.sha | slice: 0, 7 }}</span>.
+    {% endif %}
   </div>
 </footer>
 {% else %}
@@ -21,6 +24,9 @@
     {% endif %}
     {% if site.last_updated %}
     Last updated: {{ "now" | date: '%B %d, %Y' }}.
+    {% endif %}
+    {% if site.data.build %}
+    <span class="build-tag" title="{{ site.data.build.time }}">build {{ site.data.build.sha | slice: 0, 7 }}</span>.
     {% endif %}
   </div>
 </footer>
