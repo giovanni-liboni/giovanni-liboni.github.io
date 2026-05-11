@@ -104,12 +104,13 @@
 
     img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    // Mobile: small floated avatar so the headline wraps next to it.
+    // Mobile: small floated avatar on the RIGHT so the headline starts
+    // at the left edge and the text wraps around the photo.
     @media (max-width: 640px) {
-      float: left;
+      float: right;
       width: 64px;
       height: 64px;
-      margin: 0.2rem 0.9rem 0.4rem 0;
+      margin: 0.2rem 0 0.4rem 0.9rem;
       box-shadow: 0 0 0 2px var(--accent-glow);
       justify-self: auto;
     }
