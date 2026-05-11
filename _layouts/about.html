@@ -32,6 +32,12 @@ layout: default
   </div>
 </section>
 
+{% if page.now %}
+<section class="frame" data-label="/now">
+  {{ page.now | markdownify }}
+</section>
+{% endif %}
+
 {% if page.spare_time %}
 <section class="frame" data-label="/spare-time">
   {{ page.spare_time | markdownify }}
