@@ -9,15 +9,24 @@ profile:
   image: profile.webp
 
 news: true
-selected_papers: true
+selected_papers: false
 social: true
 
+now: |
+  Building backend platforms at [Corsmed](https://corsmed.com) — Go
+  services, distributed systems, and the messy plumbing behind a
+  medical-imaging simulation product. Day-to-day I think about
+  reliability, latency, and how to keep the boring parts boring.
+
 spare_time: |
-  Outside the day job I run a small home lab and self-host most of
-  the services I depend on. Home automation is the rabbit hole I keep
-  climbing back into — [Home Assistant](https://www.home-assistant.io/)
-  is the centerpiece — and I tend to say yes when a project calls
-  for one more Raspberry Pi.
+  Outside work I run a small home lab — Intel NUCs and Dell mini
+  servers at home, plus capacity on
+  [Oracle Cloud](https://www.oracle.com/cloud/) and
+  [Hetzner](https://www.hetzner.com/) — and self-host most of the
+  services I depend on. The whole thing is kept reproducible with
+  Terraform and Ansible. Home automation is the rabbit hole I keep
+  climbing back into, with [Home Assistant](https://www.home-assistant.io/)
+  at the centerpiece.
 ---
 
-Senior Software Engineer at [Corsmed](https://corsmed.com), based in Nice. Backend in Go, building reliable platforms and distributed systems. Background in embedded and cyber-physical systems — the topic of my Ph.D. — and a soft spot for everything that sits between the edge and the cloud.
+Senior Software Engineer at [Corsmed](https://corsmed.com), based in Nice. Backend in Go, building reliable platforms and distributed systems. My academic chapter — embedded systems and cyber-physical co-simulation, the topic of my Ph.D. — is documented over on the [research archive](/publications/).
