@@ -127,6 +127,7 @@ exclude:
   - .devbox
   - .ruby-version
   - script
+  - tests
   - CONTRIBUTING.md
   - LICENSE
   - README.md

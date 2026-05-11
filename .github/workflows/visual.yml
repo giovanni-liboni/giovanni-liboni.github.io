@@ -1,0 +1,68 @@
+name: Visual
+
+on:
+  pull_request:
+    branches:
+      - source
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Build site
+        env:
+          JEKYLL_ENV: production
+          PAGES_REPO_NWO: ${{ github.repository }}
+        run: |
+          ./script/build-info
+          bundle exec jekyll build
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tests/package-lock.json
+
+      - name: Install Playwright + Chromium
+        working-directory: tests
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Serve built site
+        run: |
+          python3 -m http.server 4000 --directory _site &
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            curl -fsS http://127.0.0.1:4000/ > /dev/null && break
+            sleep 1
+          done
+
+      - name: Run visual tests
+        working-directory: tests
+        env:
+          SITE_URL: http://127.0.0.1:4000
+        run: npm test
+
+      - name: Upload screenshots
+        if: always()
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          RUN_ID: ${{ github.run_id }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-pr-${{ github.event.pull_request.number }}-${{ github.run_id }}
+          path: tests/screenshots/
+          retention-days: 14
