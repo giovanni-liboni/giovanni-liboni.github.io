@@ -2,19 +2,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>{% if site.title == "blank" %}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}{% if page.title and page.url != "/" %} | {{ page.title }}{% endif %}</title>
-<meta name="description" content="{{ site.description }}">
-{% if site.data.build %}<meta name="build" content="{{ site.data.build.sha }} {{ site.data.build.time }}">{% endif %}
+{%- comment -%}
+jekyll-seo-tag emits: <title>, meta description, canonical, full OpenGraph
+set (og:title / og:type / og:url / og:image / og:description), Twitter
+cards, and a JSON-LD Person/WebSite block with sameAs links. Site-wide
+defaults come from _config.yml (author, social, image, twitter).
+{%- endcomment -%}
+{% seo %}
 
-<!-- Open Graph -->
-{% if site.serve_og_meta %}
-<meta property="og:site_name" content="{{ site.description }}" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="{{ site.first_name }} {{ site.last_name }}" />
-<meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}" />
-<meta property="og:description" content="{{ site.description }}" />
-{% if site.og_image %}<meta property="og:image" content="{{ site.og_image }}" />{% endif %}
-{% endif %}
+{% if site.data.build %}<meta name="build" content="{{ site.data.build.sha }} {{ site.data.build.time }}">{% endif %}
 
 <!-- Fonts: JetBrains Mono only; preconnect for speed -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,8 +24,6 @@
 
 <!-- Stylesheet -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}">
 
 <!-- Theme: set early so there's no flash of wrong theme -->
 {% if site.enable_darkmode %}
