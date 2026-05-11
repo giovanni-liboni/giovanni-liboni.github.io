@@ -8,7 +8,13 @@ layout: default
   </div>
 
   <div class="hero-grid">
-    <div>
+    {% if page.profile and page.profile.image %}
+    <div class="hero-photo">
+      <img src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}" alt="{{ site.first_name }} {{ site.last_name }}">
+    </div>
+    {% endif %}
+
+    <div class="hero-text">
       <h1 class="hero-headline">
         {{ site.first_name }} <span class="accent">{{ site.last_name }}</span>
         <span class="cursor"></span>
@@ -23,12 +29,6 @@ layout: default
       <p class="hero-motto">&mdash; <em>{{ site.contact_note | strip_newlines | strip }}</em></p>
       {% endif %}
     </div>
-
-    {% if page.profile and page.profile.image %}
-    <div class="hero-photo">
-      <img src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}" alt="{{ site.first_name }} {{ site.last_name }}">
-    </div>
-    {% endif %}
   </div>
 </section>
 

@@ -80,13 +80,16 @@
   }
 
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    align-items: start;
-
+    // Desktop: photo on the right column. Photo comes first in DOM so it
+    // can float-wrap on mobile; on desktop we put it back via grid order.
     @media (min-width: 640px) {
+      display: grid;
       grid-template-columns: 1fr auto;
+      gap: 1.25rem;
+      align-items: start;
+
+      .hero-photo { order: 2; }
+      .hero-text  { order: 1; }
     }
   }
 
@@ -101,11 +104,30 @@
 
     img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+    // Mobile: small floated avatar so the headline wraps next to it.
     @media (max-width: 640px) {
-      width: 120px;
-      height: 120px;
-      justify-self: center;
-      box-shadow: 0 0 0 3px var(--accent-glow);
+      float: left;
+      width: 64px;
+      height: 64px;
+      margin: 0.2rem 0.9rem 0.4rem 0;
+      box-shadow: 0 0 0 2px var(--accent-glow);
+      justify-self: auto;
+    }
+  }
+
+  .hero-text::after {
+    // Clear the float so frames below the hero don't get tucked under the
+    // photo when the text is shorter than the avatar.
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .hero-headline {
+    // Shrink slightly on small screens so 'Giovanni Liboni' doesn't wrap
+    // immediately next to the inline avatar.
+    @media (max-width: 480px) {
+      font-size: 1.45rem;
     }
   }
 }
