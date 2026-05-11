@@ -14,3 +14,7 @@ _data/build.yml
 !devbox.json
 !devbox.lock
 
+# Override global gitignore: track the npm lockfile under tests/ so
+# CI's `npm ci` is reproducible.
+!tests/package-lock.json
+
