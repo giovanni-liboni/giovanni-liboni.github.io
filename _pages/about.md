@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-description: Backend · distributed systems · edge & cloud
+description: backend · distributed systems · edge & cloud
 
 profile:
   align: right
