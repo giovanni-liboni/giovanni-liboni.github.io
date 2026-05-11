@@ -144,7 +144,8 @@
   50% { opacity: 0; }
 }
 
-// News list
+// News list — same shape as a publication entry: inline date at the top
+// in accent color, body flows below as a block.
 
 .news {
   list-style: none;
@@ -152,21 +153,28 @@
   padding: 0;
 
   li {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    gap: 1rem;
-    padding: 0.6rem 0;
+    padding: 0.9rem 0;
     border-bottom: 1px dashed var(--fg-faint);
 
     &:last-child { border-bottom: 0; }
 
     .date {
-      color: var(--fg-mute);
+      display: inline-block;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      margin-right: 0.5rem;
       font-size: 0.85rem;
-      &::before { content: "› "; color: var(--accent); }
     }
 
-    .news-body { color: var(--fg); }
+    .news-body {
+      display: block;
+      color: var(--fg);
+      margin-top: 0.15rem;
+
+      // jekyll-emoji wraps inline content in <p>; flatten the top margin
+      // so the body sits flush under the date.
+      > p:first-child { margin-top: 0; }
+    }
   }
 }
 
