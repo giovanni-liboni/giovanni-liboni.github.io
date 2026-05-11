@@ -32,6 +32,12 @@ layout: default
   </div>
 </section>
 
+{% if page.spare_time %}
+<section class="frame" data-label="/spare-time">
+  {{ page.spare_time | markdownify }}
+</section>
+{% endif %}
+
 {% if page.news and site.news %}
 <section class="frame" data-label="/news">
   {% include news.html %}
