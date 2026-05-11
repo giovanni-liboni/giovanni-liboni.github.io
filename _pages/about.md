@@ -1,8 +1,19 @@
 ---
 layout: about
-title: about
+title: Giovanni Liboni
 permalink: /
 description: Backend · distributed systems · edge & cloud
+
+# Schema.org type for the JSON-LD block; jekyll-seo-tag picks this up.
+seo:
+  type: Person
+  name: Giovanni Liboni
+
+# 1200x630 preview card for OpenGraph + Twitter shares.
+image:
+  path: /assets/img/og-card.png
+  width: 1200
+  height: 630
 
 profile:
   align: right

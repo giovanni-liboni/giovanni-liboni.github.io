@@ -37,11 +37,35 @@ max_width: 1000px
 # TODO: add layout settings (single page vs. multi-page)
 
 # -----------------------------------------------------------------------------
-# Open Graph
+# Open Graph / SEO (handled by jekyll-seo-tag)
 # -----------------------------------------------------------------------------
-# Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+# Site-wide preview image for OG / Twitter cards. Falls back to this when a
+# page doesn't define its own.
+image: /assets/img/og-card.png
+logo: /assets/img/og-card.png
+
+# Author info, picked up by jekyll-seo-tag for the JSON-LD Person schema
+# and Twitter card attribution.
+author:
+  name: Giovanni Liboni
+  email: giovanni@liboni.me
+  url: https://giovanni.liboni.me
+  twitter: GiovanniLiboni
+
+# Twitter card defaults (handle = the @username shown in the card byline).
+twitter:
+  username: GiovanniLiboni
+  card: summary_large_image
+
+# Used by jekyll-seo-tag to populate Person.sameAs in the JSON-LD block.
+social:
+  name: Giovanni Liboni
+  links:
+    - https://github.com/giovanni-liboni
+    - https://www.linkedin.com/in/giovanniliboni
+    - https://twitter.com/GiovanniLiboni
+    - https://scholar.google.com/citations?user=VPFpRTEAAAAJ
+    - https://orcid.org/0000-0002-0981-0750
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -139,6 +163,8 @@ plugins:
   - jekyll-email-protect
   - jekyll-github-metadata
   - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-seo-tag
   - jekyll/scholar
   - jekyll-twitter-plugin
   - jemoji
