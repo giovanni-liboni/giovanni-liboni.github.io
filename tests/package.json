@@ -1,0 +1,11 @@
+{
+  "name": "visual-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node visual.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.59.0"
+  }
+}

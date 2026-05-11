@@ -1,7 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.2/.schema/devbox.schema.json",
   "packages": [
-    "ruby@3.3"
+    "ruby@3.3",
+    "playwright@latest",
+    "nodejs_22@latest"
   ],
   "shell": {
     "scripts": {

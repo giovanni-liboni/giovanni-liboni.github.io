@@ -5,6 +5,103 @@
       "last_modified": "2026-05-03T16:35:46Z",
       "resolved": "github:NixOS/nixpkgs/73c703c22422b8951895a960959dbbaca7296492?lastModified=1777826146&narHash=sha256-wQ%2FiN5Zp5VIa3ebBibijPnLyKhor%2BxEbDy4d0goa9Zs%3D"
     },
+    "nodejs_22@latest": {
+      "last_modified": "2026-04-23T13:07:47Z",
+      "plugin_version": "0.0.2",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#nodejs_22",
+      "source": "devbox-search",
+      "version": "22.22.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0zb2cr3b9xlancr6s938s73pxfcbzji2-nodejs-22.22.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/0zb2cr3b9xlancr6s938s73pxfcbzji2-nodejs-22.22.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2axvilfkmlz8wfa9zimidv5l1cydi4kc-nodejs-22.22.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2axvilfkmlz8wfa9zimidv5l1cydi4kc-nodejs-22.22.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5b95ias241mw7bp4bindlc5xxn66phjy-nodejs-22.22.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/5b95ias241mw7bp4bindlc5xxn66phjy-nodejs-22.22.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6x6v11xjf0psckgqmyhfyhw9bdma0rn6-nodejs-22.22.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6x6v11xjf0psckgqmyhfyhw9bdma0rn6-nodejs-22.22.2"
+        }
+      }
+    },
+    "playwright@latest": {
+      "last_modified": "2026-04-30T11:26:30Z",
+      "resolved": "github:NixOS/nixpkgs/7aaa00e7cc9be6c316cb5f6617bd740dd435c59d#playwright",
+      "source": "devbox-search",
+      "version": "1.59.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ryrbklwx4fm57djibvxz9skvc8nm1r1d-playwright-core-1.59.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ryrbklwx4fm57djibvxz9skvc8nm1r1d-playwright-core-1.59.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kzhra5kizi6rsmlnlk0m0ayynlw7cixm-playwright-core-1.59.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kzhra5kizi6rsmlnlk0m0ayynlw7cixm-playwright-core-1.59.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/25k0vryiwd4l94pwf7ryzq14z31063s3-playwright-core-1.59.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/25k0vryiwd4l94pwf7ryzq14z31063s3-playwright-core-1.59.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/jzdig02pgpjxqh2ghpvf4ba2zki9vfka-playwright-core-1.59.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/jzdig02pgpjxqh2ghpvf4ba2zki9vfka-playwright-core-1.59.1"
+        }
+      }
+    },
     "ruby@3.3": {
       "last_modified": "2026-01-23T17:20:52Z",
       "plugin_version": "0.0.2",
