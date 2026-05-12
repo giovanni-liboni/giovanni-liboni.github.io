@@ -25,9 +25,9 @@ social: true
 
 now: |
   Building backend platforms at [Corsmed](https://corsmed.com). Go
-  services, distributed systems, and the messy plumbing behind a
-  medical-imaging simulation product. Day-to-day I think about
-  reliability, latency, and how to keep the boring parts boring.
+  services, distributed systems, and the core infrastructure behind
+  a medical-imaging simulation product. Day-to-day I focus on
+  reliability, latency, and keeping the boring parts boring.
 
 spare_time: |
   Outside work I run a small home lab. Intel NUCs and Dell mini
